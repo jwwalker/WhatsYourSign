@@ -367,6 +367,7 @@ bail:
         //extract
         // pass 'YES' to also generate entitlements
         self.signingInfo = extractSigningInfo(self.path, kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSCheckAllArchitectures | kSecCSEnforceRevocationChecks, YES);
+        os_log(OS_LOG_DEFAULT, "WYS: signing information %{public}@", self.signingInfo);
         
         //if item is app bundle
         // generate hashes of app's executable!

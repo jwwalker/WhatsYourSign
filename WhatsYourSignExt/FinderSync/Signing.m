@@ -18,6 +18,7 @@
 
 #import <sys/sysctl.h>
 
+@import OSLog;
 @import Security;
 @import CommonCrypto;
 @import SystemConfiguration;
@@ -221,6 +222,7 @@ NSMutableDictionary* extractSigningInfo(NSString* path, SecCSFlags flags, BOOL e
             //bail
             goto bail;
         }
+        os_log( OS_LOG_DEFAULT, "WYS: signing details %{public}@", signingDetails );
         
         //add entitlements?
         if( (YES == entitlements) &&
