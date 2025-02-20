@@ -109,6 +109,18 @@
         }
       }
     },
+    "fOg-KA-SSb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Runtime:\"; ObjectID = \"fOg-KA-SSb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Runtime:"
+          }
+        }
+      }
+    },
     "hum-eq-Yxi.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Item Path\"; ObjectID = \"hum-eq-Yxi\";",
       "extractionState" : "extracted_with_value",
@@ -141,6 +153,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre de Ítem"
+          }
+        }
+      }
+    },
+    "saq-D3-vzS.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"determining...\"; ObjectID = \"saq-D3-vzS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "determining..."
           }
         }
       }

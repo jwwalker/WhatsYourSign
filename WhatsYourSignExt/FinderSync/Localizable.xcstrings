@@ -133,6 +133,9 @@
         }
       }
     },
+    "Hardened" : {
+      "comment" : "Hardened runtime"
+    },
     "kernel extension (bundle)" : {
       "comment" : "kernel extension (bundle)",
       "localizations" : {
@@ -167,7 +170,7 @@
       }
     },
     "None" : {
-      "comment" : "None",
+      "comment" : "no special runtime\n   None",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -187,6 +190,12 @@
           }
         }
       }
+    },
+    "Sandboxed" : {
+      "comment" : "Sandboxed runtime"
+    },
+    "Sandboxed, Hardened" : {
+      "comment" : "Sandboxed, Hardened runtime"
     },
     "Signing Info" : {
       "comment" : "Signing Info",

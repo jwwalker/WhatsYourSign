@@ -412,22 +412,22 @@
 	{
 		if (hardened)
 		{
-			self.runtime.stringValue = @"Sandboxed, Hardened";
+			self.runtime.stringValue = NSLocalizedString(@"Sandboxed, Hardened", @"Sandboxed, Hardened runtime");
 		}
 		else
 		{
-			self.runtime.stringValue = @"Sandboxed";
+			self.runtime.stringValue = NSLocalizedString(@"Sandboxed", @"Sandboxed runtime");
 		}
 	}
 	else
 	{
 		if (hardened)
 		{
-			self.runtime.stringValue = @"Hardened";
+			self.runtime.stringValue = NSLocalizedString(@"Hardened", @"Hardened runtime");
 		}
 		else
 		{
-			self.runtime.stringValue = @"None";
+			self.runtime.stringValue = NSLocalizedString(@"None", @"no special runtime");
 		}
 	}
 
