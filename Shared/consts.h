@@ -63,6 +63,9 @@
 //signature status
 #define KEY_SIGNATURE_STATUS @"signatureStatus"
 
+//cs flags
+#define KEY_SIGNING_FLAGS @"flags"
+
 //signing auths
 #define KEY_SIGNING_AUTHORITIES @"signingAuthorities"
 
@@ -104,22 +107,6 @@
 
 //path to killall
 #define KILLALL @"/usr/bin/killall"
-
-//button title: upgrade
-#define ACTION_UPGRADE @"Upgrade"
-
-//action to uninstall
-// ->also button title
-#define ACTION_UNINSTALL @"Uninstall"
-
-//button title: close
-#define ACTION_CLOSE @"Close"
-
-//button title: restart
-#define ACTION_RESTART @"Restart Finder"
-
-//button title: next
-#define ACTION_NEXT @"Next »"
 
 //flag to uninstall
 #define ACTION_UNINSTALL_FLAG 0

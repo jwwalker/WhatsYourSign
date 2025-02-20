@@ -14,6 +14,7 @@
 @implementation ConfigureWindowController
 
 @synthesize statusMsg;
+@synthesize isUninstalling;
 @synthesize moreInfoButton;
 
 //automatically called when nib is loaded
@@ -43,19 +44,19 @@
 -(void)configure:(BOOL)isInstalled
 {
     //set window title
-    [self window].title = [NSString stringWithFormat:@"WYS v%@", getAppVersion()];
+    [self window].title = [NSString stringWithFormat:NSLocalizedString(@"WYS v%@",), getAppVersion()];
     
     //emoji support, 10.11+
     if(@available(macOS 10.11, *))
     {
         //init status msg
-        [self.statusMsg setStringValue:@"Code-signing info via the UI 🔏"];
+        [self.statusMsg setStringValue:NSLocalizedString(@"Code-signing info via the UI 🔏", @"Code-signing info via the UI 🔏")];
     }
     //no emoji support :(
     else
     {
         //init status msg
-        [self.statusMsg setStringValue:@"Code-signing info via the UI."];
+        [self.statusMsg setStringValue:NSLocalizedString(@"Code-signing info via the UI.", @"Code-signing info via the UI.")];
     }
     
     //app already installed?
@@ -67,7 +68,7 @@
         self.uninstallButton.enabled = YES;
         
         //set to 'upgrade'
-        self.installButton.title = ACTION_UPGRADE;
+        self.installButton.title = NSLocalizedString(@"Upgrade", @"Upgrade");
     }
     //otherwise disable
     else
@@ -95,9 +96,15 @@
     //make it key window
     [self.window makeKeyAndOrderFront:self];
     
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
-    
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+        
     //not in dark mode?
     // make window white
     if(YES != isDarkMode())
@@ -114,15 +121,7 @@
 {
     //action
     NSUInteger action = 0;
-    
-    //uninstall flag
-    __block BOOL uninstalled = NO;
-    
-    //dbg msg
-    //#ifdef DEBUG
-    //logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling action click: %@", ((NSButton*)sender).title]);
-    //#endif
-    
+        
     //grab tag
     action = ((NSButton*)sender).tag;
     
@@ -148,10 +147,6 @@
             restartFinder();
         });
         
-        //set flag
-        // need to know if user uninstalled (to exit app now)
-        uninstalled = [self.statusMsg.stringValue containsString:@"uninstall"];
-        
         //update button tag
         self.installButton.enabled = NO;
         
@@ -165,7 +160,7 @@
         self.statusMsg.font = [NSFont fontWithName:@"Menlo" size:13];
         
         //set message
-        self.statusMsg.stringValue = @"...restarting Finder.app";
+        self.statusMsg.stringValue = NSLocalizedString(@"...restarting Finder.app", @"...restarting Finder.app");
         
         //after a bit
         // on uninstall: close app
@@ -174,13 +169,13 @@
             
             //check if we're here cuz of an uninstall
             // and if so, close the app
-            if(YES == uninstalled)
+            if(YES == self.isUninstalling)
             {
                 //set message
-                self.statusMsg.stringValue = @"...now exiting, goodbye!";
+                self.statusMsg.stringValue = NSLocalizedString(@"...now exiting, goodbye!", @"...now exiting, goodbye!");
                 
                 //close app after 1 second
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     
                     //close app
                     [NSApp terminate:self];
@@ -207,13 +202,21 @@
                 self.statusMsg.font = [NSFont fontWithName:@"Menlo-Bold" size:13];
                 
                 //set msg
-                self.statusMsg.stringValue = @"WhatsYourSign installed!";
+                self.statusMsg.stringValue = NSLocalizedString(@"WhatsYourSign installed!", @"WhatsYourSign installed!");
                 
                 //update button tag
                 self.installButton.tag = ACTION_NEXT_FLAG;
                 
                 //update button title
-                self.installButton.title = ACTION_NEXT;
+                self.installButton.title = NSLocalizedString(@"Next »", @"Next »");
+                
+                if(@available(macOS 14.0, *)) {
+                    [NSApp activate];
+                }
+                else
+                {
+                    [NSApp activateIgnoringOtherApps:YES];
+                }
                 
                 //and make it first responder
                 [self.window makeFirstResponder:self.installButton];
@@ -262,7 +265,7 @@
     }
     
     //'yes'?'
-    // load supprt in URL
+    // load support in URL
     else if(ACTION_SUPPORT_FLAG == action)
     {
         //open URL
@@ -279,6 +282,9 @@
     //install/uninstall logic handlers
     else
     {
+        //set flag
+        self.isUninstalling = (ACTION_UNINSTALL_FLAG == action);
+        
         //hide 'get more info' button
         self.moreInfoButton.hidden = YES;
         
@@ -399,13 +405,13 @@ bail:
     if(ACTION_INSTALL_FLAG == event)
     {
         //update status msg
-        [self.statusMsg setStringValue:@"Installing..."];
+        [self.statusMsg setStringValue:NSLocalizedString(@"Installing...", @"Installing...")];
     }
     //uninstall msg
     else
     {
         //update status msg
-        [self.statusMsg setStringValue:@"Uninstalling..."];
+        [self.statusMsg setStringValue:NSLocalizedString(@"Uninstalling...", @"Uninstalling...")];
     }
     
     //disable action button
@@ -443,13 +449,13 @@ bail:
         if(ACTION_INSTALL_FLAG == event)
         {
             //set result msg
-            resultMsg = @"WhatsYourSign installed!\nRestart 'Finder.app' to complete.";
+            resultMsg = NSLocalizedString(@"WhatsYourSign installed!\nRestart 'Finder.app' to complete.", @"WhatsYourSign installed!\nRestart 'Finder.app' to complete.");
         }
         //uninstall?
         else
         {
             //set result msg
-            resultMsg = @"WhatsYourSign uninstalled!\nRestart 'Finder.app' to complete.";
+            resultMsg = NSLocalizedString(@"WhatsYourSign uninstalled!\nRestart 'Finder.app' to complete.", @"WhatsYourSign uninstalled!\nRestart 'Finder.app' to complete.");
         }
     }
     //failure
@@ -462,13 +468,13 @@ bail:
         if(ACTION_INSTALL_FLAG == event)
         {
             //set result msg
-            resultMsg = @"Error: install failed.";
+            resultMsg = NSLocalizedString(@"Error: install failed.", @"Error: install failed.");
         }
         //uninstall failed?
         else
         {
             //set result msg
-            resultMsg = @"Error: uninstall failed.";
+            resultMsg = NSLocalizedString(@"Error: uninstall failed.", @"Error: uninstall failed.");
         }
     
         //show 'get more info' button
@@ -497,11 +503,11 @@ bail:
     self.statusMsg.stringValue = resultMsg;
     
     //update button
-    // no errors, change button to 'Restart'
+    // no errors, change button to 'Restart Finder'
     if(YES == success)
     {
         //update button title
-        self.installButton.title = ACTION_RESTART;
+        self.installButton.title = NSLocalizedString(@"Restart Finder", @"Restart Finder");
         
         //update button tag
         self.installButton.tag = ACTION_RESTART_FLAG;
@@ -511,13 +517,17 @@ bail:
         
         //and make it first responder
         [self.window makeFirstResponder:self.installButton];
+        
+        //make us 'modal'
+        // ensures we have focus after Finder restart
+        [self.window setLevel:NSPopUpMenuWindowLevel];
     }
     //update button
     // on error, change button to 'Close'
     else
     {
         //set button title
-        self.installButton.title = ACTION_CLOSE;
+        self.installButton.title = NSLocalizedString(@"Close", @"Close");
         
         //update button tag
         self.installButton.tag = ACTION_CLOSE_FLAG;
@@ -532,8 +542,14 @@ bail:
     //(re)make window window key
     [self.window makeKeyAndOrderFront:self];
     
-    //(re)make window front
-    [NSApp activateIgnoringOtherApps:YES];
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
     return;
 }

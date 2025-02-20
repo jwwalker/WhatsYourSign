@@ -169,7 +169,7 @@ bail:
     if(YES != [NSFileManager.defaultManager isReadableFileAtPath:self.path])
     {
         //blank
-        localizedType = @"?";
+        localizedType = NSLocalizedString(@"?",@"?");
         
         //bail
         goto bail;
@@ -200,7 +200,7 @@ bail:
             (YES == [self.path hasSuffix:@".kext"]) )
         {
                 //set
-                localizedType = @"kernel extension (bundle)";
+                localizedType = NSLocalizedString(@"kernel extension (bundle)", @"kernel extension (bundle)");
         }
     }
     //not a directory
@@ -239,7 +239,7 @@ bail:
     if(nil == localizedType)
     {
         //set
-        localizedType = @"unknown type";
+        localizedType = NSLocalizedString(@"unknown type", @"unknown type");
     }
     
     //set type
@@ -366,8 +366,7 @@ bail:
     {
         //extract
         // pass 'YES' to also generate entitlements
-        self.signingInfo = extractSigningInfo(self.path, kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSCheckAllArchitectures | kSecCSEnforceRevocationChecks, YES);
-        os_log(OS_LOG_DEFAULT, "WYS: signing information %{public}@", self.signingInfo);
+        self.signingInfo = extractSigningInfo(self.path, kSecCSCheckNestedCode | kSecCSEnforceRevocationChecks, YES);
         
         //if item is app bundle
         // generate hashes of app's executable!

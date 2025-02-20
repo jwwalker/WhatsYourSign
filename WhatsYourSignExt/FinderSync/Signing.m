@@ -224,6 +224,13 @@ NSMutableDictionary* extractSigningInfo(NSString* path, SecCSFlags flags, BOOL e
         }
         os_log( OS_LOG_DEFAULT, "WYS: signing details %{public}@", signingDetails );
         
+        //grab flags
+        if( (nil != [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoFlags]) )
+        {
+            //extract/save
+            signingInfo[KEY_SIGNING_FLAGS] = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoFlags];
+        }
+        
         //add entitlements?
         if( (YES == entitlements) &&
             (nil != [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoEntitlementsDict]) )
@@ -301,7 +308,8 @@ NSMutableDictionary* extractSigningInfo(NSString* path, SecCSFlags flags, BOOL e
         }
     }
     //check notarization status
-    if(errSecSuccess == SecStaticCodeCheckValidity(staticCode, kSecCSDefaultFlags, isNotarized))
+    // note: force online checks (revocation)
+    if(errSecSuccess == SecStaticCodeCheckValidity(staticCode, kSecCSEnforceRevocationChecks, isNotarized))
     {
         //notarized
         signingInfo[KEY_SIGNING_IS_NOTARIZED] = [NSNumber numberWithInteger:errSecSuccess];

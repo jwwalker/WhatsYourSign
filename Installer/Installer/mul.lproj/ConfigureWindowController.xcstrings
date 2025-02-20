@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1hy-8F-qxt.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Install\"; ObjectID = \"1hy-8F-qxt\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Install"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalar"
+          }
+        }
+      }
+    },
+    "aSi-C3-cWC.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"It's free, open-source, and written by a single (Mac-loving) coder!\"; ObjectID = \"aSi-C3-cWC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "It's free, open-source, and written by a single (Mac-loving) coder!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
+          }
+        }
+      }
+    },
+    "aVK-IU-MlC.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Yes!\"; ObjectID = \"aVK-IU-MlC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yes!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Sí!"
+          }
+        }
+      }
+    },
+    "G7H-Q1-04P.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Uninstall\"; ObjectID = \"G7H-Q1-04P\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Uninstall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desinstalar"
+          }
+        }
+      }
+    },
+    "MpN-aA-d4I.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Show some love? \"; ObjectID = \"MpN-aA-d4I\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show some love? "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Nos das tu apoyo?"
+          }
+        }
+      }
+    },
+    "OAq-Xt-6Jl.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"No\"; ObjectID = \"OAq-Xt-6Jl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "pLM-Ah-iPD.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Mahalo to the \\\"Friends Objective-See\\\"\"; ObjectID = \"pLM-Ah-iPD\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Mahalo to the \"Friends Objective-See\""
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo a los “Friends de Objective-See”"
+          }
+        }
+      }
+    },
+    "x4I-KI-Y8p.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Support \\\"What's Your Sign\\\"?\"; ObjectID = \"x4I-KI-Y8p\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Support \"What's Your Sign\"?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apoyas \"What’s Your Sign?”"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
